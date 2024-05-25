@@ -14,7 +14,8 @@ return {
           "gopls",
           "rust_analyzer",
           "html",
-          "zls"
+          "zls",
+          "biome",
         },
       })
     end,
@@ -23,22 +24,35 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+      }
 
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
+        handlers = handlers,
       })
       lspconfig.gopls.setup({
         capabilities = capabilities,
+        handlers = handlers,
       })
       lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
+        handlers = handlers,
       })
       lspconfig.html.setup({
         capabilities = capabilities,
+        handlers = handlers,
       })
       lspconfig.zls.setup({
         capabilities = capabilities,
+        handlers = handlers,
+      })
+      lspconfig.biome.setup({
+        capabilities = capabilities,
+        handlers = handlers,
       })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})

@@ -15,7 +15,8 @@ return {
           "rust_analyzer",
           "html",
           "zls",
-          "biome",
+          "pyright",
+          "ols",
         },
       })
     end,
@@ -50,7 +51,11 @@ return {
         capabilities = capabilities,
         handlers = handlers,
       })
-      lspconfig.biome.setup({
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+        handlers = handlers,
+      })
+      lspconfig.ols.setup({
         capabilities = capabilities,
         handlers = handlers,
       })

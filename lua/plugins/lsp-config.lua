@@ -22,6 +22,7 @@ return {
         "pyright",
         "ols",
         "clangd",
+        "omnisharp",
       },
       handlers = {
         function(server_name)
@@ -29,6 +30,16 @@ return {
             capabilities = capabilities,
             handlers = handlers
           }
+        end,
+        clangd = function()
+          local lspconfig = require("lspconfig")
+          lspconfig.clangd.setup({
+            capabilities = capabilities,
+            handlers = handlers,
+            init_options = {
+              fallbackFlags = { '--std=c++20' }
+            },
+          })
         end
       }
     })

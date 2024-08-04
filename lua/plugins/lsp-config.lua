@@ -40,8 +40,17 @@ return {
               fallbackFlags = { '--std=c++20' }
             },
           })
-        end
+        end,
       }
+    })
+
+    local lspconfig = require("lspconfig")
+    lspconfig.gleam.setup({
+      capabilities = capabilities,
+      handlers = handlers,
+      cmd = { "gleam", "lsp" },
+      root_dir = lspconfig.util.root_pattern("gleam.toml", ".git"),
+      filetypes = { "gleam" },
     })
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

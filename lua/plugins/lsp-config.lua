@@ -23,6 +23,7 @@ return {
         "ols",
         "clangd",
         "omnisharp",
+        "yamlls",
       },
       handlers = {
         function(server_name)

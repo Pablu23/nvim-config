@@ -7,8 +7,8 @@ return {
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     local handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+      -- ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+      -- ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
     }
 
     require("mason").setup()
@@ -24,6 +24,7 @@ return {
         "clangd",
         "omnisharp",
         "yamlls",
+        "svelte",
       },
       handlers = {
         function(server_name)
